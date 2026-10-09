@@ -1,13 +1,162 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>demo</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html>
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yekkudu Vinaykumar | Full Stack Portfolio</title>
+<style>
+:root{--bg:#060608;--fg:#fff;--mut:#9aa0ad;--line:#1d1f27;--card:#0e1015;--v:#8b5cf6;--c:#22d3ee;--a:#fbbf24;--p:#f472b6;--g:#4ade80;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 "Space Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:hidden}
+.mono{font-family:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace}
+a{color:inherit}button{font:inherit;cursor:pointer;color:var(--fg)}
+.gl{position:fixed;width:70vmax;height:70vmax;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0;opacity:.25;left:-20vmax;top:-20vmax;will-change:transform,opacity}
+#pb{position:fixed;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--v),var(--c),var(--g),var(--a),var(--p));transform-origin:0 50%;transform:scaleX(0);z-index:50}
+nav{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;justify-content:space-between;align-items:center;padding:calc(env(safe-area-inset-top,0px) + 14px) 5vw 14px;font-size:14px;backdrop-filter:blur(10px);background:rgba(6,6,8,.55)}
+nav a{text-decoration:none;color:var(--mut);margin-left:20px}nav a:hover{color:var(--fg)}nav .b{color:var(--fg);margin:0}
+main{position:relative;z-index:5}
+section{padding:110px 5vw;max-width:1180px;margin:0 auto}
+.lab{font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:12px}
+h2{font-size:clamp(30px,6vw,64px);line-height:1;margin:0 0 16px;letter-spacing:-.03em}
+.sub{color:var(--mut);max-width:60ch;margin:0 0 28px}
+.rv{opacity:0;transform:translateY(46px);transition:opacity .7s ease,transform .95s cubic-bezier(.34,1.3,.64,1)}.rv.in{opacity:1;transform:none}
+#top{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;max-width:1180px}
+#hi{will-change:transform,opacity}
+h1{font-size:clamp(42px,11vw,136px);line-height:.93;margin:0;letter-spacing:-.045em}
+h1 .w{display:block}.l{display:inline-block;white-space:pre;will-change:transform;animation:dr .9s cubic-bezier(.34,1.56,.64,1) backwards}
+@keyframes dr{from{transform:translateY(-110px);opacity:0}}
+.tag{font-size:clamp(17px,2.2vw,22px);max-width:44ch;margin:28px 0}.tag em{font-style:normal;color:var(--c)}
+.tele{font-size:13px;color:var(--mut);margin-bottom:20px}.tele b{color:var(--g);font-weight:400}
+.sc{position:absolute;bottom:28px;left:5vw;font-size:12px;color:var(--mut);letter-spacing:.2em}
+.btn{display:inline-block;padding:11px 22px;border:1px solid #fff;border-radius:99px;text-decoration:none;font-size:15px;margin:0 10px 10px 0;background:transparent}
+.btn.pri{background:#fff;color:#000}.btn:hover{border-color:var(--c);color:var(--c)}.btn.pri:hover{background:var(--c);color:#000}
+#ab p{font-size:clamp(24px,4.4vw,52px);line-height:1.15;letter-spacing:-.025em;margin:0;max-width:20em}
+#ab .w{opacity:.18;transition:opacity .35s,color .35s}#ab .w.on{opacity:1}#ab .w.k{color:var(--p)}#ab .w.k2{color:var(--c)}
+#st{height:560vh;max-width:none;padding:0}
+.stk{position:sticky;top:0;height:100vh;height:100svh;display:grid;grid-template-columns:1.1fr 1fr;gap:5vw;align-items:center;max-width:1180px;margin:0 auto;padding:80px 5vw 30px}
+.stl h3{font-size:clamp(24px,3.4vw,40px);margin:0 0 12px;line-height:1.1;transition:color .4s;color:var(--sc)}
+.stl p{color:var(--mut);min-height:7.5em;margin:0 0 16px}
+.rt{font-size:13px;padding:10px 14px;border:1px solid var(--sc);border-radius:10px;display:inline-block;color:var(--sc);transition:all .4s}
+.nd{display:flex;flex-direction:column;gap:10px;position:relative}
+.n{display:flex;gap:14px;align-items:center;padding:14px 18px;border:1px solid var(--line);border-radius:14px;background:var(--card);opacity:.4;transform:scale(.96);transition:all .5s cubic-bezier(.34,1.56,.64,1)}
+.n.on{opacity:1;transform:scale(1.03) translateX(8px);border-color:var(--nc);box-shadow:0 0 40px -10px var(--nc)}
+.n i{font-style:normal;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:13px;border:1px solid var(--nc);color:var(--nc)}
+.n.on i{background:var(--nc);color:#000}
+.gate{max-width:900px;margin:0 auto;padding:60px 5vw}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px}
+.tm{background:#000;border:1px solid var(--line);border-radius:12px;padding:14px;font-size:13px;margin-top:14px;min-height:76px}
+.ok{color:var(--g)}.no{color:var(--p)}
+input[type=range]{width:100%;accent-color:var(--p)}
+#hz{max-width:none;padding:0}
+.hs{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.hs .hd{padding:0 5vw;max-width:1180px;margin:0 auto;width:100%}
+#tr{display:flex;gap:20px;padding:0 5vw;will-change:transform}
+.pn{flex:0 0 min(78vw,420px);min-height:300px;display:flex;flex-direction:column;justify-content:space-between}
+.pn h3{margin:8px 0;font-size:24px}.pn p{color:var(--mut);margin:0 0 14px;font-size:15px}
+.tg{font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.ch{display:inline-block;font-size:12px;padding:3px 10px;border:1px solid var(--line);border-radius:6px;margin:0 6px 8px 0}
+canvas.d{width:100%;height:210px;display:block;border-radius:10px;background:#000;cursor:crosshair}
+.ct{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0;align-items:center}
+.pl{padding:6px 14px;border:1px solid var(--line);border-radius:99px;background:transparent;font-size:13px}.pl.on{background:#fff;color:#000}
+.stt{font-size:14px;color:var(--mut)}.stt b{color:var(--a);font-size:22px}
+.bar{display:flex;height:14px;border-radius:99px;overflow:hidden;background:var(--line);margin:16px 0 10px}
+.bar i{display:block;width:0;transition:width 1.4s cubic-bezier(.34,1.2,.64,1)}.in .bar i{width:var(--w)}
+footer{padding:60px 5vw 50px;text-align:center;color:var(--mut);font-size:13px}
+@media (max-width:760px){.stk{grid-template-columns:1fr;gap:18px;align-content:center}.nd{flex-direction:row;flex-wrap:wrap}.n{padding:8px 12px;flex:1 1 40%}.n span{display:none}.stl p{min-height:11em}nav a.h{display:none}}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.l{animation:none}html{scroll-behavior:auto}}
+</style></head><body>
+<div id="pb"></div><div class="gl" style="background:var(--v)"></div><div class="gl" style="background:var(--c)"></div><div class="gl" style="background:var(--p)"></div>
+<nav class="mono"><a class="b" href="#top">yv<span style="color:var(--c)">/</span>portfolio</a><div><a class="h" href="#ab">About</a><a class="h" href="#st">HostelEase</a><a class="h" href="#hz">Projects</a><a class="h" href="#lab">Lab</a><a href="#ct">Contact</a></div></nav>
+<main>
+<section id="top"><div id="hi"><div class="mono tele"><b>&#9679;</b> 3rd-year full stack student &nbsp;|&nbsp; <span id="ck"></span></div><h1 id="nm" aria-label="Yekkudu Vinaykumar"></h1><p class="tag">I build backends with <em>real rules</em> and interfaces with <em>weight</em>. Scroll to see how.</p><a class="btn pri" href="#st">See HostelEase</a><a class="btn" href="https://github.com/YekkuduVinaykumar" target="_blank" rel="noopener">GitHub</a></div><div class="sc mono">SCROLL &darr;</div></section>
+
+<section id="ab"><div class="lab mono" style="color:var(--p)">01 / About</div><p id="abt">I'm Yekkudu Vinaykumar, a third-year full stack student. I like projects where the backend enforces real rules and the frontend feels physical.</p></section>
+
+<section id="st"><div class="stk"><div class="stl"><div class="lab mono" style="color:var(--c)">02 / Main project &middot; group project</div><h2>HostelEase</h2><h3 id="sh"></h3><p id="sp"></p><span class="rt mono" id="sr"></span><div class="note mono" style="margin-top:16px;font-size:12px;color:var(--mut)">Hostel Management System &middot; Node.js, Express, MongoDB &middot; <a href="https://github.com/Sumedha-15/HostelEase" target="_blank" rel="noopener" style="color:var(--c)">View on GitHub</a> (hosted on a teammate's account)</div></div><div class="nd" id="nd"></div></div></section>
+
+<div class="gate rv"><div class="lab mono" style="color:var(--p)">Try the rule</div><div class="card"><h3 style="margin:0 0 6px">Fee to visitor gate</h3><p class="sub" style="margin-bottom:14px">HostelEase blocks visitor check-in for students overdue past a 14-day grace period. Drag to move time forward. This reproduces the rule described in the project README.</p><input type="range" id="dy" min="0" max="30" value="0" aria-label="Days overdue"><div class="stt mono">Days overdue: <b id="dv">0</b> &nbsp; <span id="gs"></span></div><div class="tm mono" id="tm"></div><div class="ct"><button class="pl mono" id="pay">Record payment</button></div></div></div>
+
+<section id="hz" style="height:400vh"><div class="hs"><div class="hd"><div class="lab mono" style="color:var(--a)">03 / More projects</div><h2>Keep scrolling sideways</h2></div><div id="tr">
+<article class="card pn"><div><span class="tg mono" style="color:var(--v)">Flagship</span><h3>Disk Scheduling Visualizer</h3><p>Shows how disk scheduling algorithms move the read/write head. Separate frontend and backend folders. Live demo in the lab below.</p><span class="ch mono">JavaScript</span></div><div><a class="btn" href="https://github.com/YekkuduVinaykumar/DISK-SCHEDULING-VISUALIZER" target="_blank" rel="noopener">GitHub</a></div></article>
+<article class="card pn"><div><span class="tg mono" style="color:var(--c)">Featured</span><h3>Restaurant</h3><p>A restaurant website built in HTML. Planned upgrade: a menu API, ordering and an admin view.</p><span class="ch mono">HTML</span></div><div><a class="btn" href="https://github.com/YekkuduVinaykumar/restaurant" target="_blank" rel="noopener">GitHub</a></div></article>
+<article class="card pn"><div><span class="tg mono" style="color:var(--g)">Featured</span><h3>HEALTH</h3><p>A health-themed project, still taking shape. Details and a case study will be added.</p><span class="ch mono">In progress</span></div><div><a class="btn" href="https://github.com/YekkuduVinaykumar/HEALTH" target="_blank" rel="noopener">GitHub</a></div></article>
+<article class="card pn"><div><span class="tg mono" style="color:var(--a)">Archive</span><h3>chemistry-report &amp; test-2</h3><p>Coursework and an early experiment, kept on the shelf.</p></div><div><a class="btn" href="https://github.com/YekkuduVinaykumar/chemistry-report" target="_blank" rel="noopener">chemistry-report</a><a class="btn" href="https://github.com/YekkuduVinaykumar/test-2" target="_blank" rel="noopener">test-2</a></div></article>
+<article class="card pn"><div><span class="tg mono" style="color:var(--p)">Everything</span><h3>All repositories</h3><p>The full list lives on my GitHub profile.</p></div><div><a class="btn pri" href="https://github.com/YekkuduVinaykumar?tab=repositories" target="_blank" rel="noopener">Open GitHub</a></div></article></div></div></section>
+
+<section id="lab"><div class="lab mono rv" style="color:var(--v)">04 / Lab</div><h2 class="rv">The disk head has mass</h2><p class="sub rv">A small live version of my Disk Scheduling Visualizer. The head is a spring: it accelerates, overshoots slightly, then settles. Tap the track to add requests, pick an algorithm, press run.</p><div class="card rv"><canvas class="d" id="dk"></canvas><div class="ct" id="al"></div><div class="ct"><button class="pl on" id="rn">Run</button><button class="pl" id="rs">Reset queue</button><span class="stt mono">Total head movement: <b id="tt">0</b></span></div><div class="stt mono" id="od"></div></div></section>
+
+<section id="sk"><div class="lab mono rv" style="color:var(--g)">05 / Stack</div><h2 class="rv">What HostelEase is built with</h2><div class="rv"><div class="bar"><i style="--w:52.9%;background:var(--a)"></i><i style="--w:30.4%;background:var(--c)"></i><i style="--w:16.7%;background:var(--p)"></i></div><div class="stt mono"><span style="color:var(--a)">&#9632;</span> JavaScript 52.9% &nbsp; <span style="color:var(--c)">&#9632;</span> HTML 30.4% &nbsp; <span style="color:var(--p)">&#9632;</span> CSS 16.7%</div><p style="margin-top:20px"><span class="ch mono">Node.js</span><span class="ch mono">Express</span><span class="ch mono">MongoDB</span><span class="ch mono">Mongoose</span><span class="ch mono">JWT auth</span><span class="ch mono">Role-based access</span><span class="ch mono">REST API</span><span class="ch mono">Vanilla JS frontend</span></p></div></section>
+
+<section id="ct"><div class="lab mono rv" style="color:var(--c)">06 / Contact</div><h2 class="rv">Let's build something</h2><p class="sub rv">Third-year full stack student. The fastest way to reach me today is GitHub.</p><a class="btn pri rv" href="https://github.com/YekkuduVinaykumar" target="_blank" rel="noopener">github.com/YekkuduVinaykumar</a></section>
+</main><footer class="mono">&copy; 2026 Yekkudu Vinaykumar</footer>
+<script>
+(function(){
+var RM=matchMedia('(prefers-reduced-motion:reduce)').matches,$=function(s){return document.querySelector(s)},cl=function(v,a,b){return Math.max(a,Math.min(b,v))};
+var M={x:-999,y:-999};addEventListener('pointermove',function(e){M.x=e.clientX;M.y=e.clientY},{passive:true});
+function Sp(){this.x=0;this.v=0;this.t=0}Sp.prototype.step=function(d){this.v+=(-420*(this.x-this.t)-30*this.v)/.6*d;this.x+=this.v*d};
+var ck=$('#ck');function tk(){ck.textContent=new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}tk();setInterval(tk,30000);
+
+/* headline letters */
+var L=[];['YEKKUDU','VINAYKUMAR'].forEach(function(w,wi){var s=document.createElement('span');s.className='w';w.split('').forEach(function(ch,ci){var e=document.createElement('span');e.className='l';e.textContent=ch;e.setAttribute('aria-hidden','true');e.style.animationDelay=(wi*7+ci)*35+'ms';s.appendChild(e);L.push({e:e,x:new Sp,y:new Sp,cx:0,cy:0})});$('#nm').appendChild(s)});
+function meas(){L.forEach(function(l){var r=l.e.getBoundingClientRect();l.cx=r.left+r.width/2-l.x.x;l.cy=r.top+r.height/2-l.y.x+scrollY-scrollY})}
+setTimeout(meas,1300);addEventListener('resize',meas);
+
+/* about words */
+var ab=$('#abt'),wd=ab.textContent.split(' ');ab.textContent='';var WS=wd.map(function(t,i){var s=document.createElement('span');s.className='w'+(/Yekkudu|Vinaykumar,/.test(t)?' k2':'')+(/backend|frontend/.test(t)?' k':'');s.textContent=t;ab.appendChild(s);ab.appendChild(document.createTextNode(' '));return s});
+
+/* story */
+var S=[['--c','Room allocation engine','Matches a student\'s room-type and floor preference against live vacancy and gender rules. If nothing fits, the student is waitlisted automatically. Students can request a room swap, and a warden approves it.','POST /api/allocations/request'],
+['--a','Fee engine','Rent plus mess, with a late fine that grows weekly while a bill stays unpaid. The status (unpaid, partial, overdue or paid) is worked out on every read.','GET /api/fees/me'],
+['--p','Fee to visitor gate','A student overdue past a 14-day grace period is blocked from visitor check-in until dues are cleared. It is enforced on the server, not only in the interface.','POST /api/visitors/checkin \u2192 403'],
+['--v','Complaint auto-escalation','A complaint left open or in progress past a set window (48 hours by default) moves up a priority level by itself, so nothing goes stale.','PATCH /api/complaints/:id'],
+['--g','Live occupancy analytics','Occupancy per hostel and per room type is computed from real room data when asked, so no stored counter can drift out of sync.','GET /api/dashboard/occupancy']];
+var nd=$('#nd'),NS=S.map(function(s,i){var d=document.createElement('div');d.className='n';d.style.setProperty('--nc','var('+s[0]+')');d.innerHTML='<i class="mono">'+(i+1)+'</i><b>'+s[1]+'</b>';nd.appendChild(d);return d});
+var stI=-1;function setStep(i){if(i===stI)return;stI=i;var s=S[i];var st=$('#st');st.style.setProperty('--sc','var('+s[0]+')');$('#sh').textContent=s[1];$('#sp').textContent=s[2];$('#sr').textContent=s[3];NS.forEach(function(n,j){n.classList.toggle('on',j===i)})}setStep(0);
+
+/* gate demo */
+var dy=$('#dy'),pay=$('#pay');
+function gate(){var d=+dy.value;$('#dv').textContent=d;var b=d>14;$('#gs').innerHTML=d===0?'<span class="ok">bill issued</span>':b?'<span class="no">fee defaulter</span>':'<span class="ok">within grace period</span>';
+$('#tm').innerHTML='<span style="color:var(--mut)">POST /api/visitors/checkin</span><br>'+(b?'<span class="no">403 Forbidden: host must clear dues first</span>':'<span class="ok">200 OK: visitor checked in</span>')}
+dy.oninput=gate;pay.onclick=function(){dy.value=0;gate()};gate();
+
+/* disk demo */
+var MX=199,ST=53,DEF=[98,183,37,122,14,124,65,67],AL=['FCFS','SSTF','SCAN','LOOK'],dc=$('#dk'),dx=dc.getContext('2d'),DW,DH,q=DEF.slice(),alg='SSTF',hd=new Sp,path=[ST],run=null;hd.k=1;
+function ord(a,q,h){var up=q.filter(function(x){return x>=h}).sort(function(x,y){return x-y}),dn=q.filter(function(x){return x<h}).sort(function(x,y){return y-x});if(a==='FCFS')return q.slice();
+if(a==='SSTF'){var r=[],m=q.slice(),c=h;while(m.length){var b=0;for(var i=1;i<m.length;i++)if(Math.abs(m[i]-c)<Math.abs(m[b]-c))b=i;c=m[b];r.push(c);m.splice(b,1)}return r}
+return a==='SCAN'?up.concat(dn.length?[MX]:[],dn):up.concat(dn)}
+function tot(o){var t=0,c=ST;o.forEach(function(x){t+=Math.abs(x-c);c=x});return t}
+function X(c){return 20+(DW-40)*c/MX}
+var K=new Sp;K.x=K.t=ST;
+function upd(){var o=ord(alg,q,ST);$('#tt').textContent=tot(o);$('#od').textContent=alg+': '+ST+' \u2192 '+o.join(' \u2192 ')}
+function rs(){run=null;K.x=K.t=ST;K.v=0;path=[ST];upd()}
+function dsz(){var r=dc.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,1.5);DW=r.width;DH=r.height;dc.width=DW*d;dc.height=DH*d;dx.setTransform(d,0,0,d,0,0)}
+var al=$('#al');AL.forEach(function(a){var b=document.createElement('button');b.className='pl mono'+(a===alg?' on':'');b.textContent=a;b.onclick=function(){alg=a;[].forEach.call(al.children,function(x){x.className='pl mono'+(x.textContent===a?' on':'')});rs()};al.appendChild(b)});
+$('#rn').onclick=function(){rs();run={o:ord(alg,q,ST),i:0};K.t=run.o[0]};$('#rs').onclick=function(){q=DEF.slice();rs()};
+dc.onpointerdown=function(e){var r=dc.getBoundingClientRect(),c=Math.round((e.clientX-r.left-20)/(DW-40)*MX);if(c>=0&&c<=MX&&q.indexOf(c)<0&&q.length<14){q.push(c);rs()}};
+dsz();addEventListener('resize',dsz);upd();
+var dvis=false;new IntersectionObserver(function(e){dvis=e[0].isIntersecting}).observe(dc);
+function dframe(d){if(!dvis)return;if(run){var f=-120*(K.x-K.t)-20*K.v;K.v+=f/1.8*d;K.x+=K.v*d;if(Math.abs(K.x-K.t)<1.2&&Math.abs(K.v)<12){run.i++;path.push(run.o[run.i-1]);if(run.i<run.o.length)K.t=run.o[run.i];else run=null}}
+var m=DH/2+10;dx.clearRect(0,0,DW,DH);dx.strokeStyle='#5b6170';dx.lineWidth=2;dx.beginPath();dx.moveTo(X(0),m);dx.lineTo(X(MX),m);dx.stroke();dx.font='11px monospace';dx.fillStyle='#9aa0ad';dx.textAlign='center';dx.fillText('0',X(0),m+34);dx.fillText(MX,X(MX),m+34);
+dx.strokeStyle='#fbbf24';dx.lineWidth=1.5;dx.beginPath();path.concat(run?[K.x]:[]).forEach(function(c,i){var y=m-24-i*8;i?dx.lineTo(X(c),y):dx.moveTo(X(c),y)});dx.stroke();
+q.forEach(function(c){dx.fillStyle='#fff';dx.fillRect(X(c)-2,m-8,4,16);dx.fillStyle='#22d3ee';dx.fillText(c,X(c),m+20)});
+var s=Math.min(Math.abs(K.v)/220,.5);dx.fillStyle='#f472b6';dx.beginPath();dx.ellipse(X(K.x),m,12+s*14,12-s*5,0,0,6.283);dx.fill()}
+
+/* scroll engine */
+var gl=[].slice.call(document.querySelectorAll('.gl')),pb=$('#pb'),hi=$('#hi'),st=$('#st'),hz=$('#hz'),tr=$('#tr'),ticking=false;
+function sizeHz(){hz.style.height=(tr.scrollWidth-innerWidth+innerHeight*1.4)+'px'}sizeHz();addEventListener('resize',sizeHz);
+function onScroll(){ticking=false;var y=scrollY,H=innerHeight,mx=document.documentElement.scrollHeight-H,p=mx>0?y/mx:0;
+pb.style.transform='scaleX('+p+')';
+gl.forEach(function(g,k){g.style.transform='translate('+(30+55*Math.sin(p*7+k*2.1))+'vw,'+(20+60*Math.cos(p*5+k*1.7))+'vh)';g.style.opacity=(.14+.16*Math.sin(p*9+k*2.4)).toFixed(2)});
+if(!RM){hi.style.transform='translateY('+(y*.3)+'px)';hi.style.opacity=cl(1-y/(H*.7),0,1)}
+var r=$('#ab').getBoundingClientRect(),pr=cl((H*.85-r.top)/(r.height+H*.45),0,1);WS.forEach(function(w,i){w.classList.toggle('on',i/WS.length<pr)});
+var sr=st.getBoundingClientRect();setStep(cl(Math.floor(cl(-sr.top/(st.offsetHeight-H),0,.999)*5),0,4));
+var hr=hz.getBoundingClientRect(),hp=cl(-hr.top/(hz.offsetHeight-H),0,1);tr.style.transform='translateX('+(-hp*(tr.scrollWidth-innerWidth+30))+'px)'}
+addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(onScroll)}},{passive:true});onScroll();
+var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});document.querySelectorAll('.rv').forEach(function(e){io.observe(e)});
+
+var last=performance.now();
+function loop(n){requestAnimationFrame(loop);var d=Math.min((n-last)/1000,.033);last=n;if(document.hidden)return;
+if(!RM&&scrollY<innerHeight)L.forEach(function(l){var dx2=l.cx-M.x,dy2=l.cy-M.y-0,q2=Math.hypot(dx2,dy2),f=q2<110&&q2>0?(1-q2/110)*26:0;l.x.t=q2?f*dx2/q2:0;l.y.t=q2?f*dy2/q2:0;l.x.step(d);l.y.step(d);l.e.style.transform='translate('+l.x.x.toFixed(1)+'px,'+l.y.x.toFixed(1)+'px)'});
+dframe(d)}
+requestAnimationFrame(loop);
+})();
+</script></body></html>
